@@ -6,7 +6,7 @@ from PyQt5.QtCore import *
 class CodeHighlighter(QSyntaxHighlighter):
     
     def __init__(self, parent):
-        
+        super(CodeHighlighter, self).__init__(parent)
         kw_format = QTextCharFormat()
         kw_format.setForeground(QBrush(QColor(255, 0, 120)))
 
@@ -22,7 +22,6 @@ class CodeHighlighter(QSyntaxHighlighter):
         
 
     def highlightBlock(self, text):
-        
         for r in self.rules:
             exp = QRegExp(r[0])
             index = exp.indexIn(text)
